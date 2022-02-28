@@ -92,20 +92,28 @@ type Mutation{
 // The root provides a resolver function for each API endpoint
 
 var root = {
-  restaurant: (arg) => {
-    // Your code goes here
+restaurant: (arg) => restaurants[arg.id],
+restaurants: () => restaurants,
+setrestaurant: ({ input }) => {
+    restaurants.push({ name: input.name, email: input.email, age: input.age });
+    return input;
+    },
+deleterestaurant: ({ id }) => {
+    const ok = Boolean(restaurants[id]);
+    let delc = restaurants[id];
+    restaurants = restaurants.filter((item) => item.id !== id);
+    console.log(JSON.stringify(delc));
+    return { ok };
   },
-  restaurants: () => {
-    // Your code goes here
-  },
-  setrestaurant: ({ input }) => {
-    // Your code goes here
-  },
-  deleterestaurant: ({ id }) => {
-    // Your code goes here
-  },
-  editrestaurant: ({ id, ...restaurant }) => {
-    // Your code goes here
+editrestaurant: ({ id, ...restaurant }) => {
+    if (!restaurants[id]) {
+      throw new Error("restaurant doesn't exist");
+    }
+    restaurants[id] = {
+      ...restaurants[id],
+      ...restaurant,
+    };
+    return restaurants[id];
   },
 };
 var app = express();
