@@ -77,6 +77,7 @@ type Dish{
   price: Int
 }
 input restaurantInput{
+  id: Int
   name: String
   description: String
 }
