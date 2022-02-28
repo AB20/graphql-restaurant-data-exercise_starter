@@ -77,7 +77,6 @@ type Dish{
   price: Int
 }
 input restaurantInput{
-  id: Int
   name: String
   description: String
 }
@@ -96,7 +95,7 @@ var root = {
 restaurant: (arg) => restaurants[arg.id],
 restaurants: () => restaurants,
 setrestaurant: ({ input }) => {
-    restaurants.push({ id: input.id, name: input.name, description: input.description });
+    restaurants.push({name: input.name, description: input.description });
     return input;
     },
 deleterestaurant: ({ id }) => {

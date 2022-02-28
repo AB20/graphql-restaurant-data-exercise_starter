@@ -1,4 +1,4 @@
-query getRestaurant ($iid: Int = 1) {
+query getRestaurant ($iid: Int = 4) {
   restaurant(id: $iid) {
     name
     description
@@ -12,6 +12,7 @@ query getRestaurant ($iid: Int = 1) {
 query getrestaurants {
     #gets ALL restaurants
     restaurants {
+      id
       name
       description
       dishes {
@@ -21,9 +22,8 @@ query getrestaurants {
     }
   }
   
-mutation setRestaurant ($iid: Int = 99, $name: String = "My Restaurant", $desc: String = "Description") {
+mutation setRestaurant ($name: String = "My Restaurant", $desc: String = "My Description") {
   setrestaurant(input: {
-    id: $iid,
     name: $name,
     description: $desc,
   }) {
@@ -32,13 +32,13 @@ mutation setRestaurant ($iid: Int = 99, $name: String = "My Restaurant", $desc: 
   }
 }
 
-mutation deleterestaurants($iid: Int = 1) {
+mutation deleterestaurants($iid: Int = 99) {
   deleterestaurant(id: $iid) {
     ok
   }
 }
 
-mutation editrestaurants($idd: Int = 1, $name: String = "OLDO") {
+mutation editrestaurants($idd: Int = 2, $name: String = "EDIT Restaurant 2") {
   editrestaurant(id: $idd, name: $name) {
     name
     description
