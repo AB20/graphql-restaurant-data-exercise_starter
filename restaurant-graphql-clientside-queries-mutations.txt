@@ -9,7 +9,7 @@ query getRestaurant ($iid: Int = 1) {
   }
 }
 
-  query getrestaurants {
+query getrestaurants {
     #gets ALL restaurants
     restaurants {
       name
@@ -21,7 +21,7 @@ query getRestaurant ($iid: Int = 1) {
     }
   }
   
-  mutation setRestaurant ($iid: Int = 1, $name: String = "My Restaurant", $desc: String = "Description") {
+mutation setRestaurant ($iid: Int = 99, $name: String = "My Restaurant", $desc: String = "Description") {
   setrestaurant(input: {
     id: $iid,
     name: $name,
