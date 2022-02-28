@@ -1,5 +1,5 @@
-query getRestaurant ($iid: Int = 4) {
-  restaurant(id: $iid) {
+query getRestaurant {
+  restaurant(id: 0) {
     name
     description
     dishes {
